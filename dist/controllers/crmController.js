@@ -6,6 +6,7 @@ const Contact = mongoose.model('Contact', crmModel_1.ContactSchema);
 class ContactController {
     addNewContact(req, res) {
         let newContact = new Contact(req.body);
+        console.log(req.body);
         newContact.save((err, contact) => {
             if (err) {
                 res.send(err);

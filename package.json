@@ -11,8 +11,8 @@
     "prod": "npm run build && npm run start"
   },
   "keywords": [
-    "Dale",
-    "Nguyen"
+    "Aviv",
+    "Bueno"
   ],
   "author": "Testy Test",
   "license": "ISC",
