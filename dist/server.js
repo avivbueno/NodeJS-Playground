@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = require("./app");
 const http = require("http");
 //import * as fs from 'fs';
-const PORT = 3000;
+const PORT = (process.env.PORT || 5000);
 /*const httpsOptions = {
     key: fs.readFileSync('./config/key.pem'),
     cert: fs.readFileSync('./config/cert.pem')
