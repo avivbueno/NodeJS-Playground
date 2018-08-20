@@ -1,14 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const crmController_1 = require("../controllers/crmController");
-const affiliateController_1 = require("../controllers/affiliateController");
+const userController_1 = require("../controllers/userController");
 class Routes {
     constructor() {
         this.contactController = new crmController_1.ContactController();
-        this.affiliateController = new affiliateController_1.AffiliateController();
-        this.key = '78942ef2c1c98bf10fca09c808d718fa3734703e';
-    }
-    validateKey(key) {
+        this.userController = new userController_1.UserController();
+        this.key = "78942ef2c1c98bf10fca09c808d718fa3734703e";
     }
     routes(app) {
         app.route('/')
@@ -39,7 +37,7 @@ class Routes {
             .put(this.contactController.updateContact)
             .delete(this.contactController.deleteContact);
         // Contact 
-        app.route('/affiliate')
+        app.route('/user')
             .get((req, res, next) => {
             // middleware
             console.log(`Request from: ${req.originalUrl}`);
@@ -50,16 +48,16 @@ class Routes {
             else {
                 next();
             }
-        }, this.affiliateController.getAffiliates)
+        }, this.userController.getUsers)
             // POST endpoint
-            .post(this.affiliateController.addNewAffiliate);
-        // aff detail
-        app.route('/affiliate/:affiliateId')
-            // get specific aff
-            .get(this.affiliateController.getAffiliateWithID)
-            .put(this.affiliateController.updateAffiliate)
-            .delete(this.affiliateController.deleteAffiliate);
+            .post(this.userController.addNewUser);
+        // Contact detail
+        app.route('/user/:userId')
+            // get specific contact
+            .get(this.userController.getUserWithID)
+            .put(this.userController.updateUser)
+            .delete(this.userController.deleteUser);
     }
 }
 exports.Routes = Routes;
-//# sourceMappingURL=crmRoutes.js.map
+//# sourceMappingURL=appRoutes.js.map

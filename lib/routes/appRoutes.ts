@@ -1,17 +1,14 @@
 import { Request, Response, NextFunction } from "express";
 import { ContactController } from "../controllers/crmController";
-import { AffiliateController } from "../controllers/affiliateController";
+import { UserController } from "../controllers/userController";
 
 export class Routes {
-
+    
     public contactController: ContactController = new ContactController()
-    public affiliateController: AffiliateController = new AffiliateController()
-    key : string = '78942ef2c1c98bf10fca09c808d718fa3734703e';
-    private validateKey(key: string){
-        
-    }
+    public userController: UserController = new UserController()
+    private key:string = "78942ef2c1c98bf10fca09c808d718fa3734703e";
     public routes(app): void {
-
+        
         app.route('/')
             .get((req: Request, res: Response) => {
                 res.status(200).send({
@@ -41,7 +38,7 @@ export class Routes {
             .delete(this.contactController.deleteContact)
 
         // Contact 
-        app.route('/affiliate')
+        app.route('/user')
             .get((req: Request, res: Response, next: NextFunction) => {
                 // middleware
                 console.log(`Request from: ${req.originalUrl}`);
@@ -51,15 +48,15 @@ export class Routes {
                 } else {
                     next();
                 }
-            }, this.affiliateController.getAffiliates)
+            }, this.userController.getUsers)
             // POST endpoint
-            .post(this.affiliateController.addNewAffiliate);
-        // aff detail
-        app.route('/affiliate/:affiliateId')
-            // get specific aff
-            .get(this.affiliateController.getAffiliateWithID)
-            .put(this.affiliateController.updateAffiliate)
-            .delete(this.affiliateController.deleteAffiliate)
+            .post(this.userController.addNewUser);
+        // Contact detail
+        app.route('/user/:userId')
+            // get specific contact
+            .get(this.userController.getUserWithID)
+            .put(this.userController.updateUser)
+            .delete(this.userController.deleteUser)
 
     }
 }

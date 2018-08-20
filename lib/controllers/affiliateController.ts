@@ -26,7 +26,7 @@ export class AffiliateController{
         });
     }
 
-    public getAffiliateWithID (req: Request, res: Response) {           
+    public getAffiliateWithID (req: Request, res: Response) {          
         Affiliate.findById(req.params.affiliateId, (err, affiliate) => {
             if(err){
                 res.send(err);
